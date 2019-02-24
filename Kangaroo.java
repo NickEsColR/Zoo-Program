@@ -2,6 +2,14 @@ package model;
 
 public class Kangaroo
 {
+
+	//constants
+	
+	public final static double lts = 1.5;
+	public final static String typeA = "A";
+	public final static String typeAB = "AB";
+	public final static String typeB = "B";
+	public final static String typeO = "O";
 	
 	//attributes
 	
@@ -10,7 +18,7 @@ public class Kangaroo
 	private double height;
 	private String gender;
 	private String bloodType;
-	private int imc;
+	private double imc;
 	private double water;
 	private String health;
 	private double food;
@@ -18,10 +26,12 @@ public class Kangaroo
 	//relations
 	
 	private Date bornDate;
+	private Date vaccineDate;
 	
 	//metodo
 	
-	public Kangaroo (String name, int weight, double height, String gender, String bloodType, int imc, double water, String health, Date bornDate, double food, boolean vaccine){
+	public Kangaroo (String name, int weight, double height, String gender, String bloodType, double imc, double water, String health, 
+	Date bornDate, double food, boolean vaccine, Date vaccineDate){
 		this.name = name;
 		this.weight = weight;
 		this.height = height;
@@ -74,28 +84,44 @@ public class Kangaroo
 	  bloodType = theBlood;
 	}
 	
-	public int getImc(){
+	public double getImc(){
 	  return imc;
 	}
 	
-	public void setImc(int theImc){
-		imc = theImc;
-	}
+	public double setImc(){
+		imc = weight / (height * height);
+		return imc;
+		}
 	
 	public double getWater(){
 	  return water;
 	}
 	
-	public void setWater(double theWater){
-	  water = theWater;
+	public double setWater(){
+	  water = imc * lts;
+	  return water;
 	}
 	
 	public String getHealth(){
 	  return health;
 	}
 	
-	public void setHealth(String theHealth){
-	  health = theHealth;
+	public String setHealth(){
+		if (imc < 18){
+			if (bloodType .equals(typeA) || bloodType .equals(typeAB))
+				health = "Riesgo bajo";
+			else
+				health = "Riesgo moderado";
+		}	
+		else if (imc >= 18 && imc <=25)
+			health = "Riesgo bajo";
+		else{ 
+			if (bloodType .equals(typeA) || bloodType .equals(typeB) || bloodType .equals(typeO))
+				health = "Riesgo alto";
+			else
+				health = "Riesgo moderado";
+		}
+		return health;
 	}
 	
 	public Date getBornDate(){
@@ -110,8 +136,15 @@ public class Kangaroo
 		return food;
 	}
 	
-	public void setFood(double theFood){
-		food = theFood;
+	public double setFood(){
+		int kWeight = weight - 48;
+		if (weight < 30)
+			food = weight * 0.80;
+		else if (weight >= 30 && weight <=48)
+			food = weight * 1.10;
+		else
+			food = 40 + (0.4 * kWeight);
+		return food;
 	}
 	
 	public boolean getVaccine(){
@@ -121,4 +154,5 @@ public class Kangaroo
 	public void setVaccine(boolean vac){
 		vaccine = vac;
 	}
+	
 }

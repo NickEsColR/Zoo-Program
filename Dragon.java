@@ -39,15 +39,17 @@ public class Dragon
 		return imc;
 	}
 	
-	public void setImc(double theImc){
-		imc = theImc;
+	public double setImc(){
+		imc = weight / (height * height);
+		return imc;
 	}
 	
 	public double getWater(){
 	  return water;
 	}
 	
-	public void setWater(double theWater){
-	  water = theWater;
+	public double setWater(){
+	  water = imc * 0.75;
+	  return water;
 	}
 }
