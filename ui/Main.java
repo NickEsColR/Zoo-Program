@@ -10,6 +10,7 @@ public class Main{
 	
 	public Main(){
 	
+		//necesito saber como llamar el metodo de calculo correctamente
 		Dragon female = new Dragon(0.4, 0.5, 1.6, 1.2);
 		Dragon male = new Dragon(0.5, 0.6, 1.38, 1.035);
 		DragonZone dz = new DragonZone(38, true, male, female);
