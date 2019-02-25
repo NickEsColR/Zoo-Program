@@ -1,15 +1,17 @@
 package ui;
 
 import model.*;
+import java.util.Scanner;
 
 public class Main{
-	
+
 	//dependence
 	
 	private Display zoo;
 	
 	public Main(){
-	
+		int cont = 0;
+		Scanner option = new Scanner(System.in);
 		//necesito saber como llamar el metodo de calculo correctamente
 		Dragon female = new Dragon(0.4, 0.5, 1.6, 1.2);
 		Dragon male = new Dragon(0.5, 0.6, 1.38, 1.035);
@@ -30,7 +32,49 @@ public class Main{
 		Kangaroo k2 = new Kangaroo("Dany", 40, 1.0, "Female", "A", 40, 60, "Riesgo alto", dk2, 44, false, vdk2); //second kangaroo in habitat1
 		kz1.setKangaroo2(k2);
 		zoo = new Display(1500, kz1, kz2, kz3, dz );
-	
+		
+		while (cont != 6){
+			showMenu();
+			int election = option.nextInt();
+			switch (election){
+				case 1:
+					System.out.println("*************************************************************************");
+					System.out.println("crear un canguro nuevo");
+					System.out.println("*************************************************************************");
+				break;
+				case 2:
+					System.out.println("*************************************************************************");
+					System.out.println("Eliminar un canguro");
+					System.out.println("*************************************************************************");
+				break;
+				case 3:
+					System.out.println("*************************************************************************");
+					System.out.println("Cambiar el canguro de jaula");
+					System.out.println("*************************************************************************");
+				break;
+				case 4:
+					System.out.println("*************************************************************************");
+					System.out.println("El animal del zoologico con mas vocales es...");
+					System.out.println("*************************************************************************");
+				break;
+				case 5:
+					System.out.println("*************************************************************************");
+					System.out.println("Fecha de vacunacion del kanguro");
+					System.out.println("*************************************************************************");
+				break;
+				case 6:
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
+					cont = 6;
+				break;
+				default:
+					System.out.println("*************************************************************************");
+					System.out.println("Porfavor elija una opcion valida");
+					System.out.println("*************************************************************************");
+				break;
+			}
+		}
 	}
 	
 	public static void main(String[] args){
@@ -38,5 +82,15 @@ public class Main{
 
 	}
 	
+	public void showMenu(){
+		
+		System.out.println("digite el numero de la opcion que desea");
+		System.out.println("1. Crear un canguro nuevo y asignarlo a una jaula");
+		System.out.println("2. Eliminar un canguro");
+		System.out.println("3. Cambiar el canguro de jaula");
+		System.out.println("4. Animal del zoologico con mas vocales");
+		System.out.println("5. Ver fecha de vacunacion de los canguros");
+		System.out.println("6. Salir del programa");
+	}
 }
 
