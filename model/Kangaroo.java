@@ -161,4 +161,18 @@ public class Kangaroo
 	public void setVaccineDate(Date vaccineDate){
 		this.bornDate = vaccineDate;
 	}
+	
+	public int searchVocals(){
+		int vocal = 0;
+		int cont = 0;
+		while (cont >= 0){
+			if (name.charAt(cont) == 'a' ||name.charAt(cont) == 'o' || name.charAt(cont) == 'e' || name.charAt(cont) == 'i' || name.charAt(cont) == 'u' ){
+				vocal += 1;
+				cont += 1;
+			}	
+			if (name .charAt(cont) == ' ')
+				cont = -1;
+		}
+		return vocal;
+	}
 }

@@ -67,4 +67,9 @@ public class Display{
 	public void getImc(){
 		habitat1.getImc();
 	}
+	
+	public int searchVocals(){
+		int vocal = habitat1.searchVocals();
+		return vocal;
+	}
 }

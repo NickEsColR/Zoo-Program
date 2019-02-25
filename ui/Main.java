@@ -54,7 +54,9 @@ public class Main{
 				break;
 				case 4:
 					System.out.println("*************************************************************************");
-					System.out.println("El animal del zoologico con mas vocales es...");
+					System.out.println("El animal del zoologico con mas vocales es ");
+					int vocal = zoo.searchVocals();
+					System.out.println(vocal);
 					System.out.println("*************************************************************************");
 				break;
 				case 5:

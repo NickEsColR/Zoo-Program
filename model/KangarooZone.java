@@ -71,7 +71,13 @@ public class KangarooZone
 	  this.kangaroo3 = kangaroo3;
 	}
 	
-	public void getImc(){
-		kangaroo1.setImc();
+	public double getImc(){
+		double imc = kangaroo1.setImc();
+		return imc;
+	}
+	
+	public int searchVocals(){
+		int vocal = kangaroo1.searchVocals();
+		return vocal;
 	}
 }
