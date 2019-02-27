@@ -53,9 +53,9 @@ public class Main{
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
+					String vocal = zoo.searchVocals();
 					System.out.println("*************************************************************************");
 					System.out.println("El animal del zoologico con mas vocales es ");
-					int vocal = zoo.searchVocals();
 					System.out.println(vocal);
 					System.out.println("*************************************************************************");
 				break;

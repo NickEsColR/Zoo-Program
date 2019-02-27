@@ -72,12 +72,31 @@ public class KangarooZone
 	}
 	
 	public double getImc(){
-		double imc = kangaroo1.setImc();
+		double imc = kangaroo1.getImc();
 		return imc;
 	}
 	
-	public int searchVocals(){
-		int vocal = kangaroo1.searchVocals();
+	public String searchVocals(){
+		String vocal = "";
+		int vocal1 = kangaroo1.searchVocals();
+		int vocal2 = 0;
+		int vocal3 = 0;
+		if (kangaroo2 != null)
+			 vocal2 = kangaroo2.searchVocals();
+		if (kangaroo3 != null)
+			 vocal3 = kangaroo3.searchVocals();
+		if(vocal1 > vocal2){
+			if(vocal1 > vocal3)
+				vocal = "kangaroo1" + vocal1;
+			else 
+				vocal = "kangaroo3" + vocal3;
+		}
+		else{
+			if(vocal2 > vocal3)
+				vocal = "kangaroo2" + vocal2;
+			else
+				vocal = "kangaroo3" + vocal3;
+		}
 		return vocal;
 	}
 }

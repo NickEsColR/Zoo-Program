@@ -88,25 +88,24 @@ public class Kangaroo
 	  return imc;
 	}
 	
-	public double setImc(){
+	public void setImc(){
 		imc = weight / (height * height);
-		return imc;
+		
 		}
 	
 	public double getWater(){
 	  return water;
 	}
 	
-	public double setWater(){
+	public void setWater(){
 	  water = imc * lts;
-	  return water;
 	}
 	
 	public String getHealth(){
 	  return health;
 	}
 	
-	public String setHealth(){
+	public void setHealth(){
 		if (imc < 18){
 			if (bloodType .equals(typeA) || bloodType .equals(typeAB))
 				health = "Riesgo bajo";
@@ -121,7 +120,6 @@ public class Kangaroo
 			else
 				health = "Riesgo moderado";
 		}
-		return health;
 	}
 	
 	public Date getBornDate(){
@@ -136,7 +134,7 @@ public class Kangaroo
 		return food;
 	}
 	
-	public double setFood(){
+	public void setFood(){
 		int kWeight = weight - 48;
 		if (weight < 30)
 			food = weight * 0.80;
@@ -144,7 +142,6 @@ public class Kangaroo
 			food = weight * 1.10;
 		else
 			food = 40 + (0.4 * kWeight);
-		return food;
 	}
 	
 	public boolean getVaccine(){

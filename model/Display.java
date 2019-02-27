@@ -68,8 +68,9 @@ public class Display{
 		habitat1.getImc();
 	}
 	
-	public int searchVocals(){
-		int vocal = habitat1.searchVocals();
-		return vocal;
+	public String searchVocals(){
+		String vocal1 = habitat1.searchVocals();
+		String mensaje = "funciona";
+		return mensaje;
 	}
 }
