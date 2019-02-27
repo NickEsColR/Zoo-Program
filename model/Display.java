@@ -69,8 +69,38 @@ public class Display{
 	}
 	
 	public String searchVocals(){
-		String vocal1 = habitat1.searchVocals();
-		String mensaje = "funciona";
-		return mensaje;
+		String theName = "";
+		theName += habitat1.searchVocals();
+		theName += habitat2.searchVocals();
+		theName += habitat3.searchVocals();
+		return theName;
 	}
+	
+		public  String seeHabitat(int election){
+			String cage = "";
+			switch(election){
+				case 1:
+				if(habitat1.getKangaroo3() == null)
+					cage = "Esta jaula esta llena";
+				else
+					cage = "puede continuar";
+				break;
+				case 2:
+				if(habitat2.getKangaroo3() == null)
+					cage = "Esta jaula esta llena";
+				else
+					cage = "puede continuar";
+				break;
+				case 3:
+				if(habitat3.getKangaroo3() == null)
+					cage = "Esta jaula esta llena";
+				else
+					cage = "puede continuar";
+				break;
+				default:
+					cage = "elija una opcion valida";
+				break;
+		}
+			return cage;
+		}
 }

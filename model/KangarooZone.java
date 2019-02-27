@@ -77,26 +77,13 @@ public class KangarooZone
 	}
 	
 	public String searchVocals(){
-		String vocal = "";
-		int vocal1 = kangaroo1.searchVocals();
-		int vocal2 = 0;
-		int vocal3 = 0;
+		String theName = "";
+		theName += kangaroo1.searchVocals() + " ";
 		if (kangaroo2 != null)
-			 vocal2 = kangaroo2.searchVocals();
+			theName += kangaroo2.searchVocals() + " ";
 		if (kangaroo3 != null)
-			 vocal3 = kangaroo3.searchVocals();
-		if(vocal1 > vocal2){
-			if(vocal1 > vocal3)
-				vocal = "kangaroo1" + vocal1;
-			else 
-				vocal = "kangaroo3" + vocal3;
-		}
-		else{
-			if(vocal2 > vocal3)
-				vocal = "kangaroo2" + vocal2;
-			else
-				vocal = "kangaroo3" + vocal3;
-		}
-		return vocal;
+			theName += kangaroo3.searchVocals() + " ";
+		return theName;
 	}
+	
 }

@@ -30,16 +30,12 @@ public class Kangaroo
 	
 	//metodo
 	
-	public Kangaroo (String name, int weight, double height, String gender, String bloodType, double imc, double water, String health, 
-	Date bornDate, double food, boolean vaccine, Date vaccineDate ){
+	public Kangaroo (String name, int weight, double height, String gender, String bloodType, Date bornDate, double food, boolean vaccine, Date vaccineDate ){
 		this.name = name;
 		this.weight = weight;
 		this.height = height;
 		this.gender = gender;
 		this.bloodType = bloodType;
-		this.imc = imc;
-		this.water = water;
-		this.health = health;
 		this.bornDate = bornDate;
 		this.vaccine = vaccine;
 	}
@@ -159,17 +155,16 @@ public class Kangaroo
 		this.bornDate = vaccineDate;
 	}
 	
-	public int searchVocals(){
-		int vocal = 0;
-		int cont = 0;
-		while (cont >= 0){
-			if (name.charAt(cont) == 'a' ||name.charAt(cont) == 'o' || name.charAt(cont) == 'e' || name.charAt(cont) == 'i' || name.charAt(cont) == 'u' ){
-				vocal += 1;
-				cont += 1;
-			}	
-			if (name .charAt(cont) == ' ')
-				cont = -1;
+	public String searchVocals(){
+		String theName = "";
+		String n = name.toLowerCase(); //modification of name
+		if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u' &&  
+		n .charAt(name.length()-1) == 'a' || n .charAt(name.length()-1) == 'e' || n .charAt(name.length()-1) == 'i' || 
+		n .charAt(name.length()-1) ==  'o' || n .charAt(name.length()-1) == 'u' )
+		{
+			theName = name;
 		}
-		return vocal;
+		
+		return theName;
 	}
 }
