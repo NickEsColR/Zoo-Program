@@ -45,17 +45,26 @@ public class Main{
 					System.out.println(zoo.seeHabitat(cage));
 					String kg = addKangaroo(cage);
 					System.out.println(kg);
-					
 					System.out.println("*************************************************************************");
 				break;
 				case 2:
 					System.out.println("*************************************************************************");
-					System.out.println("Eliminar un canguro");
+					System.out.println("¿En que jaula se encuentra el canguro a eliminar?");
+					cage = option.nextInt();
+					System.out.println("¿cual es el numero del canguro a eliminar");
+					int delete = option.nextInt();
+					System.out.println(deleteKangaroo(cage, delete));
 					System.out.println("*************************************************************************");
 				break;
 				case 3:
 					System.out.println("*************************************************************************");
-					System.out.println("Cambiar el canguro de jaula");
+					System.out.println("Digite la jaula en la que se encuentra el canguro que desea cambiar");
+					cage = option.nextInt();
+					System.out.println("Digite la jaula a donde va a poner el canguro");
+					int cage2 = option.nextInt();
+					System.out.println(zoo.seeHabitat(cage2));
+					System.out.println("Digite la posicion del canguro en la jaula inicial");
+					int kangaroo = option.nextInt();
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
@@ -102,56 +111,62 @@ public class Main{
 	}
 	
 	public String addKangaroo(int cage){
+		Scanner option = new Scanner(System.in);
+		int theDayV = 0;
+		int theMonthV = 0;
+		int theYearV = 0;
 		String msj = "";
 		boolean vaccine = false;
+		String board = option.nextLine();
+		int boardI = option.nextInt();
 		System.out.println("Digite el nombre del canguro");
-		String theName = option.nextInt();
+		String theName = board;
 		System.out.println("Digite el peso del canguro");
-		int theWeight = option.nextInt();
+		int theWeight = boardI;
 		System.out.println("Digite la altura del canguro");
-		double theHeight = option.nextInt();
+		double theHeight = boardI;
 		System.out.println("Digite el genero del canguro");
-		String theGender = option.nextInt();
+		String theGender = board;
 		System.out.println("Digite el tipo de sangre del canguro");
-		String theBlood = option.nextInt();
+		String theBlood = board;
 		System.out.println("Digite el dia de nacimiento del canguro");
-		int theDay = option.nextInt();
+		int theDay = boardI;
 		System.out.println("Digite el mes de nacimiento del canguro");
-		int theMonth = option.nextInt();
+		int theMonth = boardI;
 		System.out.println("Digite el año de nacimiento del canguro");
-		int theYear = option.nextInt();
+		int theYear = boardI;
 		System.out.println("¿El canguro esta vacunado? si o no");
-		String theVaccine = option.nextInt();
+		String theVaccine = board;
 		if (theVaccine .equalsIgnoreCase("si"))
 			vaccine = true;
 		else if(theVaccine .equalsIgnoreCase("no"))
 			vaccine = false;
 		if(vaccine){
 			System.out.println("Digite el dia de vacunacion del canguro");
-			int theDayV = option.nextInt();
+			theDayV = boardI;
 			System.out.println("Digite el mes de vacunacion del canguro");
-			int theMonthV = option.nextInt();
+			theMonthV = boardI;
 			System.out.println("Digite el año de vacunacion del canguro");
-			int theYearV = option.nextInt();
+			theYearV = boardI;
 		}
-		else{
-			theDayV = null;
-			theMonthV = null;
-			theYearV = null;
-		}
-		if (theGender .equalsIgnoreCase("male"){
-			if(theGender .equalsIgnoreCase(zoo.getGender(cage))
+		
+		if (theGender .equalsIgnoreCase("male")){
+			if(theGender .equalsIgnoreCase(zoo.getGender(cage)))
 				msj = "ya existe un macho en esta jaula";
 		}
 		else{
-			Date dk4 = new Date(theDayV, theMonthV, theYearV);//vaccine date for the new kangaroo
-			Date dk4 = new Date(theDay, theMonth, theYear);//born date for the new kangaroo
+			Date vdkn = new Date(theDayV, theMonthV, theYearV);//vaccine date for the new kangaroo
+			Date dkn = new Date(theDay, theMonth, theYear);//born date for the new kangaroo
 			Kangaroo kn = new Kangaroo(theName, theWeight, theHeight, theGender, theBlood, dkn,vaccine, vdkn);//a new kangaroo is created
 			msj = "el canguro se ha creado";
 		}
 		return msj;
 	}		
-	
+	public String deleteKangaroo(int cage, int kg){
+		String msj = "";
+		msj = zoo.deleteKangaroo(cage,kg);
+		return msj;
 	}
+}
 	
-}	
+	

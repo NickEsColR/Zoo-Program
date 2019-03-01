@@ -78,6 +78,7 @@ public class KangarooZone
 	
 	public String searchVocals(){
 		String theName = "";
+		if (kangaroo1 != null)
 		theName += kangaroo1.searchVocals() + " ";
 		if (kangaroo2 != null)
 			theName += kangaroo2.searchVocals() + " ";

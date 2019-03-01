@@ -120,4 +120,48 @@ public class Display{
 		}
 		return theGender;
 	}
+	public String deleteKangaroo(int cage, int kg){
+		String msj = "";
+		Kangaroo nulled = new Kangaroo(null, 0, 0, null, null, null, false, null);
+		switch (cage){
+			case 1:
+				switch (kg){
+					case 1:
+						habitat1.setKangaroo1(nulled);
+					break;
+					case 2:
+						habitat1.setKangaroo2(nulled);
+					break;
+					case 3:
+						habitat1.setKangaroo3(nulled);
+					break;
+				}
+			case 2:
+				switch (kg){
+					case 1:
+						habitat2.setKangaroo1(nulled);
+					break;
+					case 2:
+						habitat2.setKangaroo2(nulled);
+					break;
+					case 3:
+						habitat2.setKangaroo3(nulled);
+					break;
+				}
+			switch (kg){
+					case 1:
+						habitat3.setKangaroo1(nulled);
+					break;
+					case 2:
+						habitat3.setKangaroo2(nulled);
+					break;
+					case 3:
+						habitat3.setKangaroo3(nulled);
+					break;
+				}
+		}
+		msj = "el canguro se borro correctamente";
+		return msj;
+	}
+	
 }
