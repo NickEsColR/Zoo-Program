@@ -85,5 +85,18 @@ public class KangarooZone
 			theName += kangaroo3.searchVocals() + " ";
 		return theName;
 	}
-	
+	public String getGender(){
+		String theGender = "";
+		if (kangaroo1.getGender() .equalsIgnoreCase("male"))
+			theGender = kangaroo1.getGender();
+		if(kangaroo2 != null){
+			if (kangaroo2.getGender() .equalsIgnoreCase("male"))
+				theGender = kangaroo2.getGender();
+		}
+		if(kangaroo3 != null){
+			if (kangaroo3.getGender() .equalsIgnoreCase("male"))
+			theGender = kangaroo3.getGender();
+		}
+	return theGender;
+	}
 }

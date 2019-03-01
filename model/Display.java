@@ -73,6 +73,8 @@ public class Display{
 		theName += habitat1.searchVocals();
 		theName += habitat2.searchVocals();
 		theName += habitat3.searchVocals();
+		if (theName == null)
+			theName = "no hay animales que empiecen y terminen en vocal";
 		return theName;
 	}
 	
@@ -80,19 +82,19 @@ public class Display{
 			String cage = "";
 			switch(election){
 				case 1:
-				if(habitat1.getKangaroo3() == null)
+				if(habitat1.getKangaroo3() != null)
 					cage = "Esta jaula esta llena";
 				else
 					cage = "puede continuar";
 				break;
 				case 2:
-				if(habitat2.getKangaroo3() == null)
+				if(habitat2.getKangaroo3() != null)
 					cage = "Esta jaula esta llena";
 				else
 					cage = "puede continuar";
 				break;
 				case 3:
-				if(habitat3.getKangaroo3() == null)
+				if(habitat3.getKangaroo3() != null)
 					cage = "Esta jaula esta llena";
 				else
 					cage = "puede continuar";
@@ -103,4 +105,19 @@ public class Display{
 		}
 			return cage;
 		}
+	public String getGender(int cage){
+		String theGender = "";
+		switch (cage){
+			case 1:
+			theGender = habitat1.getGender();
+			break;
+			case 2:
+			theGender = habitat2.getGender();
+			break;
+			case 3:
+			theGender = habitat3.getGender();
+			break;
+		}
+		return theGender;
+	}
 }
