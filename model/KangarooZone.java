@@ -99,5 +99,45 @@ public class KangarooZone
 			theGender = kangaroo3.getGender();
 		}
 	return theGender;
+<<<<<<< HEAD
+	}
+	public void setImc1(){
+		kangaroo1.setImc();
+	}
+	public void setImc2(){
+		kangaroo2.setImc();
+	}
+	public void setImc3(){
+		kangaroo3.setImc();
+	}
+	public void setWater1(){
+		kangaroo1.setWater();
+	}
+	public void setWater2(){
+		kangaroo2.setWater();
+	}
+	public void setWater3(){
+		kangaroo3.setWater();
+	}
+	public void setHealth1(){
+		kangaroo1.setHealth();
+	}
+	public void setHealth2(){
+		kangaroo2.setHealth();
+	}
+	public void setHealth3(){
+		kangaroo3.setHealth();
+	}
+	public int seeKangaroo(){
+		int kg = 0;
+		if (kangaroo1 == null)
+			kg = 1;
+		else if (kangaroo2 == null)
+			kg = 2;
+		else if (kangaroo3 == null)
+			kg = 3;
+		return kg;
+=======
+>>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
 	}
 }

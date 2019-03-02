@@ -33,7 +33,18 @@ public class Main{
 		Kangaroo k2 = new Kangaroo("Dany", 40, 1.0, "Female", "A", dk2, false, vdk2); //second kangaroo in habitat1
 		kz1.setKangaroo2(k2);
 		zoo = new Display(1500, kz1, kz2, kz3, dz );
-		
+		zoo.setImc1a();
+		zoo.setImc1b();
+		zoo.setImc2a();
+		zoo.setImc3a();
+		zoo.setWater1a();
+		zoo.setWater1b();
+		zoo.setWater2a();
+		zoo.setWater3a();
+		zoo.setHealth1a();
+		zoo.setHealth1b();
+		zoo.setHealth2a();
+		zoo.setHealth3a();
 		while (cont != 6){
 			showMenu();
 			int election = option.nextInt();
@@ -112,6 +123,10 @@ public class Main{
 	
 	public String addKangaroo(int cage){
 		Scanner option = new Scanner(System.in);
+<<<<<<< HEAD
+		int putKangaroo = 0;
+=======
+>>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
 		int theDayV = 0;
 		int theMonthV = 0;
 		int theYearV = 0;
@@ -158,6 +173,20 @@ public class Main{
 			Date vdkn = new Date(theDayV, theMonthV, theYearV);//vaccine date for the new kangaroo
 			Date dkn = new Date(theDay, theMonth, theYear);//born date for the new kangaroo
 			Kangaroo kn = new Kangaroo(theName, theWeight, theHeight, theGender, theBlood, dkn,vaccine, vdkn);//a new kangaroo is created
+<<<<<<< HEAD
+			switch(cage){
+				case 1:
+					putKangaroo = zoo.seeKangaroo1();
+				break;
+				case 2:
+					putKangaroo = zoo.seeKangaroo2();
+				break;
+				case 3:
+					putKangaroo = zoo.seeKangaroo3();
+				break;
+			}
+=======
+>>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
 			msj = "el canguro se ha creado";
 		}
 		return msj;
