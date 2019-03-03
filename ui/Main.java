@@ -17,37 +17,32 @@ public class Main{
 		int cont = 0;
 		Scanner option = new Scanner(System.in);
 		//necesito saber como llamar el metodo de calculo correctamente
-		Dragon female = new Dragon(0.4, 0.5, 1.6, 1.2);
-		Dragon male = new Dragon(0.5, 0.6, 1.38, 1.035);
+		Dragon female = new Dragon(0.4, 0.5);
+		Dragon male = new Dragon(0.5, 0.6);
 		DragonZone dz = new DragonZone(38, true, male, female);
+		Date dk6 = new Date(18, 8, 2018);//second kangaroo in habitat2
+		Kangaroo k6 = new Kangaroo("Anatolia", 35, 1.5, "Female", "O", dk6,true, null);//Second kangaroo in habitat2
 		Date dk4 = new Date(18, 11, 2018);//first Kangaroo in habitat3
 		Kangaroo k4 = new Kangaroo("Ezio", 44, 1.3, "Male", "AB", dk4, true, null);//editar
-		KangarooZone kz3 = new KangarooZone(1, 78, 10.4, k4);//third habitat3
-		Date vdk3 = new Date(24,07, 2007);//first kangaroo in habitat2
+		KangarooZone kz3 = new KangarooZone(1, 78, k4, k6);//third habitat3
+		Date vdk5 = new Date(12,01, 2019);//second kangaroo in habitat2
+		Date dk5 = new Date(12, 01, 2018);//second kangaroo in habitat2
+		Kangaroo k5 = new Kangaroo("Kaitlin", 40, 1.3, "Female", "A", dk5,false, vdk5);//second kangaroo in habitat2
+		Date vdk3 = new Date(24,07, 2018);//first kangaroo in habitat2
 		Date dk3 = new Date(24, 07, 2017);//first kangaroo in habitat2
-		Kangaroo k3 = new Kangaroo("Felicity", 30, 1.2, "Female", "o", dk3,false, vdk3);//first kangaroo in habitat2
-		KangarooZone kz2 = new KangarooZone(1, 54, 9.6, k3);//second habitat; modificar el 5 con la creacion del segundo canguro
-		Date vdk1 = new Date(2, 5, 2017);//first kangaroo in habitat1
-		Date dk1 = new Date(2, 5, 2016); //first kangaroo in habitat1
-		Kangaroo k1 = new Kangaroo("Stone", 70, 1.4, "Male", "AB", dk1, false, vdk1); //first kangaroo in habitat1
-		KangarooZone kz1 = new KangarooZone(2, 10, 19.2, k1); //first habitat
+		Kangaroo k3 = new Kangaroo("Felicity", 30, 1.2, "Female", "O", dk3,false, vdk3);//first kangaroo in habitat2
+		KangarooZone kz2 = new KangarooZone(1, 54, k3, k5);//second habitat; modificar el 5 con la creacion del segundo canguro
 		Date vdk2 = new Date(20, 10, 2017);//second kangaroo in habitat 
 		Date dk2 = new Date(20, 10, 2016);//second kangaroo in habitat1
 		Kangaroo k2 = new Kangaroo("Dany", 40, 1.0, "Female", "A", dk2, false, vdk2); //second kangaroo in habitat1
-		kz1.setKangaroo2(k2);
-		zoo = new Display(1500, kz1, kz2, kz3, dz );
-		zoo.setImc1a();
-		zoo.setImc1b();
-		zoo.setImc2a();
-		zoo.setImc3a();
-		zoo.setWater1a();
-		zoo.setWater1b();
-		zoo.setWater2a();
-		zoo.setWater3a();
-		zoo.setHealth1a();
-		zoo.setHealth1b();
-		zoo.setHealth2a();
-		zoo.setHealth3a();
+		Date vdk1 = new Date(2, 5, 2017);//first kangaroo in habitat1
+		Date dk1 = new Date(2, 5, 2016); //first kangaroo in habitat1
+		Kangaroo k1 = new Kangaroo("Stone", 70, 1.4, "Male", "AB", dk1, false, vdk1); //first kangaroo in habitat1
+		KangarooZone kz1 = new KangarooZone(2, 10, k1, k2); //first habitat
+		
+		
+		zoo = new Display( kz1, kz2, kz3, dz );
+		
 		while (cont != 6){
 			showMenu();
 		
@@ -80,10 +75,12 @@ public class Main{
 					System.out.println(zoo.seeHabitat(cage2));
 					System.out.println("Digite la posicion del canguro en la jaula inicial");
 					int kangaroo = option.nextInt();
+					System.out.println("El canguro se ha cambiado");
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
 					String theName = zoo.searchVocals();
+					
 					System.out.println("*************************************************************************");
 					System.out.println("el animal cuyo nombre empieza por vocal y termina por vocal ");
 					System.out.println(theName);
@@ -151,7 +148,7 @@ public class Main{
 		int theWeight = option.nextInt();
 		System.out.println("Digite la altura del canguro en centimetros");
 		double theHeight = option.nextInt();
-		hegith = height / 100;
+		theHeight = theHeight / 100;
 		System.out.println("Digite el genero del canguro");
 		String theGender = option.nextLine();
 		System.out.println("Digite el tipo de sangre del canguro");
@@ -191,14 +188,16 @@ public class Main{
 					switch(putKangaroo){
 						case 1:
 							kz1.setKangaroo1(kn);
+							
 						break;
 						case 2:
+							kz1.setKangaroo2(kn);
 							
-							kz2.setKangaroo1(kn);
 						break;
 						case 3:
 							
-							kz3.setKangaroo1(kn);
+							kz1.setKangaroo3(kn);
+							
 						break;
 					}
 				break;
@@ -206,13 +205,16 @@ public class Main{
 					putKangaroo = zoo.seeKangaroo2();
 					switch(putKangaroo){
 						case 1:
-							kz1.setKangaroo2(kn);
+							kz2.setKangaroo1(kn);
+							
 						break;
 						case 2:
 							kz2.setKangaroo2(kn);
+							
 						break;
 						case 3:
-							kz3.setKangaroo2(kn);
+							kz2.setKangaroo3(kn);
+							
 						break;
 					}
 				break;
@@ -220,14 +222,16 @@ public class Main{
 					putKangaroo = zoo.seeKangaroo3();
 					switch(putKangaroo){
 						case 1:
-							kz1.setKangaroo3(kn);
+							kz3.setKangaroo1(kn);
+						
 						break;
 						case 2:
-							kz2.setKangaroo3(kn);
+							kz3.setKangaroo2(kn);
+							
 						break;
 						case 3:
 							kz3.setKangaroo3(kn);
-						break;
+							
 					}
 				break;
 			}

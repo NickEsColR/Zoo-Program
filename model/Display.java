@@ -2,9 +2,9 @@ package model;
 
 public class Display{
 	
-	//attributes
+	//constant
 	
-	private int distance;
+	public final static int distance = 1500;
 	
 	//relations
 	
@@ -15,8 +15,8 @@ public class Display{
 	
 	//metodos
 	
-	public Display(int distance, KangarooZone habitat1, KangarooZone habitat2, KangarooZone habitat3, DragonZone habitat4){
-		this.distance = distance;
+	public Display( KangarooZone habitat1, KangarooZone habitat2, KangarooZone habitat3, DragonZone habitat4){
+		
 		this.habitat1 = habitat1;
 		this.habitat2 = habitat2;
 		this.habitat3 = habitat3;
@@ -28,9 +28,6 @@ public class Display{
 		return distance;
 	}
 	
-	public void setDistance(int theDistance){
-		distance = theDistance;
-	}
 	
 	public KangarooZone getHabitat1(){
 		return habitat1;
@@ -164,87 +161,7 @@ public class Display{
 		msj = "el canguro se borro correctamente";
 		return msj;
 	}
-	public void setImc1a (){
-		habitat1.setImc1();
-	}
-	public void  setImc1b (){
-		habitat1.setImc2();
-	}
-	public void setImc1c (){
-		habitat1.setImc3();
-	}
-	public void setImc2a (){
-		habitat2.setImc1();
-	}
-	public void setImc2b (){
-		habitat2.setImc2();
-	}
-	public void setImc2c (){
-		habitat2.setImc3();
-	}
-	public void setImc3a (){
-		habitat3.setImc1();
-	}
-	public void setImc3b (){
-		habitat3.setImc2();
-	}
-	public void setImc3c (){
-		habitat3.setImc3();
-	}
-	public void setWater1a(){
-		habitat1.setWater1();
-	}
-	public void setWater1b(){
-		habitat1.setWater2();
-	}
-	public void setWater1c(){
-		habitat1.setWater3();
-	}
-	public void setWater2a(){
-		habitat2.setWater1();
-	}
-	public void setWater2b(){
-		habitat2.setWater2();
-	}
-	public void setWater2c(){
-		habitat2.setWater3();
-	}
-	public void setWater3a(){
-		habitat3.setWater1();
-	}
-	public void setWater3b(){
-		habitat3.setWater2();
-	}
-	public void setWater3c(){
-		habitat3.setWater3();
-	}
-	public void setHealth1a(){
-		habitat1.setHealth1();
-	}
-	public void setHealth1b(){
-		habitat1.setHealth2();
-	}
-	public void setHealth1c(){
-		habitat1.setHealth3();
-	}
-	public void setHealth2a(){
-		habitat2.setHealth1();
-	}
-	public void setHealth2b(){
-		habitat2.setHealth2();
-	}
-	public void setHealth2c(){
-		habitat2.setHealth3();
-	}
-	public void setHealth3a(){
-		habitat3.setHealth1();
-	}
-	public void setHealth3b(){
-		habitat3.setHealth2();
-	}
-	public void setHealth3c(){
-		habitat3.setHealth3();
-	}
+	
 	public int seeKangaroo1(){
 		int kg = 0;
 		kg = habitat1.seeKangaroo();

@@ -53,4 +53,10 @@ public class DragonZone
 	public void setFemale(Dragon female){
 	  this.female = female;
 	}
+	public void setImcMale(){
+		male.setImc();
+	}
+	public void setImcFemale(){
+		female.setImc();
+	}
 }

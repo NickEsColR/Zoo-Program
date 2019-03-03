@@ -12,11 +12,11 @@ public class Dragon
 	
 	//metodos
 	
-	public Dragon(double weight, double height, double imc, double water){
+	public Dragon(double weight, double height){
 		this.weight = weight;
 		this.height = height;
-		this.imc = imc;
-		this.water = water;
+		this.imc = setImc();
+		this.water = setWater();
 	}
 	
 	public double getWeight(){
@@ -42,6 +42,7 @@ public class Dragon
 	public double setImc(){
 		imc = weight / (height * height);
 		return imc;
+		
 	}
 	
 	public double getWater(){
@@ -51,5 +52,6 @@ public class Dragon
 	public double setWater(){
 	  water = imc * 0.75;
 	  return water;
+	  
 	}
 }

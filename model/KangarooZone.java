@@ -16,11 +16,13 @@ public class KangarooZone
 	
 	//metodo
 	
-	public KangarooZone(int kangarooNumber, int code, double area, Kangaroo kangaroo1){
+	public KangarooZone(int kangarooNumber, int code, Kangaroo kangaroo1, Kangaroo kangaroo2){
 	  this.kangarooNumber = kangarooNumber;
 	  this.code = code;
-	  this.area = area;
+	  this.area = setArea();
 	  this.kangaroo1 = kangaroo1;
+	  this.kangaroo2 = kangaroo2;
+	  
 	}
 	
 	public int getNumber(){
@@ -43,8 +45,20 @@ public class KangarooZone
 	  return area;
 	}
 	
-	public void setArea(double theArea){
-	  area = theArea;
+	public double setArea(){
+		if (kangaroo1 != null){
+			double area1 = kangaroo1.getHeight() * 8 ;
+			area += area1;
+		}
+		if (kangaroo2 != null){
+			double area2 = kangaroo2.getHeight()* 8;
+			area += area2;
+		}
+		if (kangaroo3 != null){
+			double area3 = kangaroo3.getHeight() * 8;
+			area += area3;
+		}
+		return area;
 	}
 	
 	public Kangaroo getKangaroo1(){
@@ -79,7 +93,7 @@ public class KangarooZone
 	public String searchVocals(){
 		String theName = "";
 		if (kangaroo1 != null)
-		theName += kangaroo1.searchVocals() + " ";
+			theName += kangaroo1.searchVocals() + " ";
 		if (kangaroo2 != null)
 			theName += kangaroo2.searchVocals() + " ";
 		if (kangaroo3 != null)

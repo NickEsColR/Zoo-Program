@@ -38,6 +38,10 @@ public class Kangaroo
 		this.bloodType = bloodType;
 		this.bornDate = bornDate;
 		this.vaccine = vaccine;
+		this.imc = setImc();
+		this.water = setWater();
+		this.health = setHealth();
+		this.food = setFood();
 	}
 	
 	public String getName(){
@@ -84,24 +88,25 @@ public class Kangaroo
 	  return imc;
 	}
 	
-	public void setImc(){
+	public double setImc(){
 		imc = weight / (height * height);
-		
+		return imc;
 		}
 	
 	public double getWater(){
 	  return water;
 	}
 	
-	public void setWater(){
+	public double setWater(){
 	  water = imc * lts;
+	  return water;
 	}
 	
 	public String getHealth(){
 	  return health;
 	}
 	
-	public void setHealth(){
+	public String setHealth(){
 		if (imc < 18){
 			if (bloodType .equals(typeA) || bloodType .equals(typeAB))
 				health = "Riesgo bajo";
@@ -116,6 +121,7 @@ public class Kangaroo
 			else
 				health = "Riesgo moderado";
 		}
+		return health;
 	}
 	
 	public Date getBornDate(){
@@ -130,7 +136,7 @@ public class Kangaroo
 		return food;
 	}
 	
-	public void setFood(){
+	public double setFood(){
 		int kWeight = weight - 48;
 		if (weight < 30)
 			food = weight * 0.80;
@@ -138,6 +144,7 @@ public class Kangaroo
 			food = weight * 1.10;
 		else
 			food = 40 + (0.4 * kWeight);
+		return food;
 	}
 	
 	public boolean getVaccine(){
@@ -158,9 +165,10 @@ public class Kangaroo
 	public String searchVocals(){
 		String theName = "";
 		boolean vocal = false;
-		String n = name.toLowerCase(); //modification of name
+		
 
 		if (name != null){
+			String n = name.toLowerCase(); //modification of name
 			if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u'  )
 			{
 				vocal = true;
@@ -176,23 +184,8 @@ public class Kangaroo
 			}
 			if (vocal)
 				theName = name;
-		}
-		if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u'  )
-		{
-			vocal = true;
-		}
-		else{
-			vocal = false;
-		}
-		if (n .charAt(name.length()-1) == 'a' || n .charAt(name.length()-1) == 'e' || n .charAt(name.length()-1) == 'i' || 
-		n .charAt(name.length()-1) ==  'o' || n .charAt(name.length()-1) == 'u'){
-		}
-		else{
-			vocal = false;
-		}
-		if (vocal)
-			theName = name;	
-		return theName;
+		
+			}
+			return theName;
 	}
-	
 }
