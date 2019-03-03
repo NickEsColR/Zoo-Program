@@ -99,7 +99,7 @@ public class KangarooZone
 			theGender = kangaroo3.getGender();
 		}
 	return theGender;
-<<<<<<< HEAD
+
 	}
 	public void setImc1(){
 		kangaroo1.setImc();
@@ -137,7 +137,27 @@ public class KangarooZone
 		else if (kangaroo3 == null)
 			kg = 3;
 		return kg;
-=======
->>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
+
 	}
+	public boolean getVaccine( int kg){
+		
+		boolean dv = false;
+		switch (kg){
+			case 1:
+				if (kangaroo1 != null)
+					dv = kangaroo1.getVaccine();
+			break;
+			case 2:
+				if (kangaroo2 != null)
+					dv = kangaroo2.getVaccine();
+			break;
+			case 3:
+				if (kangaroo3 != null)	
+					dv = kangaroo3.getVaccine();
+			break;
+
+		}
+		return dv;
+	}
+	
 }

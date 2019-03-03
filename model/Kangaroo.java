@@ -148,18 +148,18 @@ public class Kangaroo
 		vaccine = vac;
 	}
 	public Date getVaccineDate(){
-		return bornDate;
+		return vaccineDate;
 	}
 	
 	public void setVaccineDate(Date vaccineDate){
-		this.bornDate = vaccineDate;
+		this.vaccineDate = vaccineDate;
 	}
 	
 	public String searchVocals(){
 		String theName = "";
 		boolean vocal = false;
 		String n = name.toLowerCase(); //modification of name
-<<<<<<< HEAD
+
 		if (name != null){
 			if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u'  )
 			{
@@ -177,7 +177,6 @@ public class Kangaroo
 			if (vocal)
 				theName = name;
 		}
-=======
 		if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u'  )
 		{
 			vocal = true;
@@ -192,10 +191,8 @@ public class Kangaroo
 			vocal = false;
 		}
 		if (vocal)
-			theName = name;
-		
->>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
-		
+			theName = name;	
 		return theName;
 	}
+	
 }

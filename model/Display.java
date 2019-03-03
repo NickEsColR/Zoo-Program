@@ -76,7 +76,7 @@ public class Display{
 		if (theName == null)
 			theName = "no hay animales que empiecen y terminen en vocal";
 		return theName;
-<<<<<<< HEAD
+
 	}
 	
 		public  String seeHabitat(int election){
@@ -259,94 +259,22 @@ public class Display{
 		int kg = 0;
 		habitat3.seeKangaroo();
 		return kg;
-=======
->>>>>>> 32f60eacdfd1277b9afe94bca3da8d6e4f821b9a
 	}
 	
-		public  String seeHabitat(int election){
-			String cage = "";
-			switch(election){
-				case 1:
-				if(habitat1.getKangaroo3() != null)
-					cage = "Esta jaula esta llena";
-				else
-					cage = "puede continuar";
-				break;
-				case 2:
-				if(habitat2.getKangaroo3() != null)
-					cage = "Esta jaula esta llena";
-				else
-					cage = "puede continuar";
-				break;
-				case 3:
-				if(habitat3.getKangaroo3() != null)
-					cage = "Esta jaula esta llena";
-				else
-					cage = "puede continuar";
-				break;
-				default:
-					cage = "elija una opcion valida";
-				break;
-		}
-			return cage;
-		}
-	public String getGender(int cage){
-		String theGender = "";
+	public boolean getVaccine(int cage, int kg){
+		boolean dv = false;
 		switch (cage){
 			case 1:
-			theGender = habitat1.getGender();
+				dv = habitat1.getVaccine(kg);
 			break;
 			case 2:
-			theGender = habitat2.getGender();
+				dv = habitat2.getVaccine(kg);
 			break;
 			case 3:
-			theGender = habitat3.getGender();
+				dv = habitat3.getVaccine(kg);
 			break;
 		}
-		return theGender;
-	}
-	public String deleteKangaroo(int cage, int kg){
-		String msj = "";
-		Kangaroo nulled = new Kangaroo(null, 0, 0, null, null, null, false, null);
-		switch (cage){
-			case 1:
-				switch (kg){
-					case 1:
-						habitat1.setKangaroo1(nulled);
-					break;
-					case 2:
-						habitat1.setKangaroo2(nulled);
-					break;
-					case 3:
-						habitat1.setKangaroo3(nulled);
-					break;
-				}
-			case 2:
-				switch (kg){
-					case 1:
-						habitat2.setKangaroo1(nulled);
-					break;
-					case 2:
-						habitat2.setKangaroo2(nulled);
-					break;
-					case 3:
-						habitat2.setKangaroo3(nulled);
-					break;
-				}
-			switch (kg){
-					case 1:
-						habitat3.setKangaroo1(nulled);
-					break;
-					case 2:
-						habitat3.setKangaroo2(nulled);
-					break;
-					case 3:
-						habitat3.setKangaroo3(nulled);
-					break;
-				}
-		}
-		msj = "el canguro se borro correctamente";
-		return msj;
+		return dv;
 	}
 	
 }
