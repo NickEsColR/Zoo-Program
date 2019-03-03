@@ -102,8 +102,10 @@ public class KangarooZone
 	}
 	public String getGender(){
 		String theGender = "";
-		if (kangaroo1.getGender() .equalsIgnoreCase("male"))
-			theGender = kangaroo1.getGender();
+		if(kangaroo1 != null){
+			if (kangaroo1.getGender() .equalsIgnoreCase("male"))
+				theGender = kangaroo1.getGender();
+		}
 		if(kangaroo2 != null){
 			if (kangaroo2.getGender() .equalsIgnoreCase("male"))
 				theGender = kangaroo2.getGender();
@@ -173,5 +175,16 @@ public class KangarooZone
 		}
 		return dv;
 	}
-	
+	public String getGender1(){
+		String gender = kangaroo1.getGender();
+		return gender;
+	}
+	public String getGender2(){
+		String gender = kangaroo2.getGender();
+		return gender;
+	}
+	public String getGender3(){
+		String gender = kangaroo3.getGender();
+		return gender;
+	}
 }

@@ -61,6 +61,7 @@ public class Main{
 					System.out.println("*************************************************************************");
 					System.out.println("¿En que jaula se encuentra el canguro a eliminar?");
 					cage = option.nextInt();
+					option.nextLine();
 					System.out.println("¿cual es el numero del canguro a eliminar");
 					int delete = option.nextInt();
 					System.out.println(deleteKangaroo(cage, delete));
@@ -70,12 +71,14 @@ public class Main{
 					System.out.println("*************************************************************************");
 					System.out.println("Digite la jaula en la que se encuentra el canguro que desea cambiar");
 					cage = option.nextInt();
+					option.nextLine();
 					System.out.println("Digite la jaula a donde va a poner el canguro");
 					int cage2 = option.nextInt();
+					option.nextLine();
 					System.out.println(zoo.seeHabitat(cage2));
 					System.out.println("Digite la posicion del canguro en la jaula inicial");
 					int kangaroo = option.nextInt();
-					System.out.println("El canguro se ha cambiado");
+					System.out.println(zoo.changeKangaroo(cage,cage2,kangaroo));
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
@@ -146,20 +149,25 @@ public class Main{
 		String theName = option.nextLine();
 		System.out.println("Digite el peso del canguro");
 		int theWeight = option.nextInt();
+		option.nextLine();
 		System.out.println("Digite la altura del canguro en centimetros");
 		double theHeight = option.nextInt();
+		option.nextLine();
 		theHeight = theHeight / 100;
-		System.out.println("Digite el genero del canguro");
+		System.out.println("Digite el genero del canguro (Male para macho y Female para hembra)");
 		String theGender = option.nextLine();
-		System.out.println("Digite el tipo de sangre del canguro");
+		System.out.println("Digite el tipo de sangre del canguro en mayusculas");
 		String theBlood = option.nextLine();
 		System.out.println("Digite el dia de nacimiento del canguro");
 		int theDay = option.nextInt();
+		option.nextLine();
 		System.out.println("Digite el mes de nacimiento del canguro");
 		int theMonth = option.nextInt();
-		System.out.println("Digite el año de nacimiento del canguro");
+		option.nextLine();
+		System.out.println("Digite el anho de nacimiento del canguro");
 		int theYear = option.nextInt();
-		System.out.println("¿El canguro esta vacunado? si o no");
+		option.nextLine();
+		System.out.println("El canguro esta vacunado? si o no");
 		String theVaccine = option.nextLine();
 		if (theVaccine .equalsIgnoreCase("si"))
 			vaccine = true;
@@ -168,10 +176,13 @@ public class Main{
 		if(vaccine){
 			System.out.println("Digite el dia de vacunacion del canguro");
 			theDayV = option.nextInt();
+			option.nextLine();
 			System.out.println("Digite el mes de vacunacion del canguro");
 			theMonthV = option.nextInt();
-			System.out.println("Digite el año de vacunacion del canguro");
+			option.nextLine();
+			System.out.println("Digite el anho de vacunacion del canguro");
 			theYearV = option.nextInt();
+			option.nextLine();
 		}
 		
 		if (theGender .equalsIgnoreCase("male")){
@@ -182,6 +193,7 @@ public class Main{
 			Date vdkn = new Date(theDayV, theMonthV, theYearV);//vaccine date for the new kangaroo
 			Date dkn = new Date(theDay, theMonth, theYear);//born date for the new kangaroo
 			Kangaroo kn = new Kangaroo(theName, theWeight, theHeight, theGender, theBlood, dkn,vaccine, vdkn);//a new kangaroo is created
+			
 			switch(cage){
 				case 1:
 					putKangaroo = zoo.seeKangaroo1();
