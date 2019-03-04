@@ -118,48 +118,58 @@ public class Display{
 		}
 		return theGender;
 	}
-	public String deleteKangaroo(int cage, int kg){
-		String msj = "";
-		Kangaroo nulled = new Kangaroo(null, 0, 0, null, null, null, false, null);
+	public void deleteKangaroo(int cage, int kg){
+		Kangaroo nulled = new Kangaroo("", 0, 0, "", "", null, false, null);
 		switch (cage){
 			case 1:
 				switch (kg){
 					case 1:
-						habitat1.setKangaroo1(nulled);
+						if (habitat1.seeKangaroo() != 1)
+							habitat1.setKangaroo1(nulled);
 					break;
 					case 2:
-						habitat1.setKangaroo2(nulled);
+						if (habitat1.seeKangaroo() != 2)
+							habitat1.setKangaroo2(nulled);
 					break;
 					case 3:
-						habitat1.setKangaroo3(nulled);
+						if (habitat1.seeKangaroo() != 3)
+							habitat1.setKangaroo3(nulled);
 					break;
 				}
+			break;
 			case 2:
 				switch (kg){
 					case 1:
-						habitat2.setKangaroo1(nulled);
+						if (habitat2.seeKangaroo() != 1)
+							habitat2.setKangaroo1(nulled);
 					break;
 					case 2:
-						habitat2.setKangaroo2(nulled);
+						if (habitat2.seeKangaroo() != 2)
+							habitat2.setKangaroo2(nulled);
 					break;
 					case 3:
-						habitat2.setKangaroo3(nulled);
+						if (habitat2.seeKangaroo() != 3)
+							habitat2.setKangaroo3(nulled);
 					break;
 				}
-			switch (kg){
+			break;
+			case 3:
+				switch (kg){
 					case 1:
-						habitat3.setKangaroo1(nulled);
+						if (habitat3.seeKangaroo() != 1)
+							habitat3.setKangaroo1(nulled);
 					break;
 					case 2:
-						habitat3.setKangaroo2(nulled);
+						if (habitat3.seeKangaroo() != 2)
+							habitat3.setKangaroo2(nulled);
 					break;
 					case 3:
-						habitat3.setKangaroo3(nulled);
+						if (habitat3.seeKangaroo() != 3)
+							habitat3.setKangaroo3(nulled);
 					break;
 				}
+			break;
 		}
-		msj = "el canguro se borro correctamente";
-		return msj;
 	}
 	
 	public int seeKangaroo1(){
@@ -169,12 +179,12 @@ public class Display{
 	}
 	public int seeKangaroo2(){
 		int kg = 0;
-		habitat2.seeKangaroo();
+		kg = habitat2.seeKangaroo();
 		return kg;
 	}
 	public int seeKangaroo3(){
 		int kg = 0;
-		habitat3.seeKangaroo();
+		kg = habitat3.seeKangaroo();
 		return kg;
 	}
 	
@@ -193,185 +203,161 @@ public class Display{
 		}
 		return dv;
 	}
-	public String changeKangaroo(int habitatA, int habitatC, int kangaroo){
+	
+	public Kangaroo copyKangaroo(int habitat, int kangaroo){
 		Kangaroo kChange = null;
-		int kg = 0;
-		boolean male = false;
-		String msj = "";
-		boolean full = false;
-		switch(habitatC){
+		switch(habitat){
 			case 1:
-				if(habitat1.getKangaroo1() != null && habitat1.getKangaroo2() != null && habitat1.getKangaroo3() != null)
-					full = true;
+				switch(kangaroo){
+					case 1:
+						if(habitat1.getKangaroo1() != null)
+							kChange = habitat1.getKangaroo1();
+					break;
+					case 2:
+						if(habitat1.getKangaroo2() != null)
+							kChange = habitat1.getKangaroo2();
+					break;
+					case 3:
+						if(habitat1.getKangaroo3() != null)
+							kChange = habitat1.getKangaroo3();									
+					break;
+				}
 			break;
 			case 2:
-				if(habitat2.getKangaroo1() != null && habitat2.getKangaroo2() != null && habitat2.getKangaroo3() != null)
-					full = true;
+				switch(kangaroo){
+					case 1:
+						if(habitat2.getKangaroo1() != null)
+							kChange = habitat2.getKangaroo1();
+					case 2:
+						if(habitat2.getKangaroo2() != null)
+							kChange = habitat2.getKangaroo2();
+					break;
+					case 3:
+						if(habitat2.getKangaroo3() != null)
+							kChange = habitat2.getKangaroo3();
+					break;
+				}
 			break;
 			case 3:
-				if(habitat3.getKangaroo1() != null && habitat3.getKangaroo2() != null && habitat3.getKangaroo3() != null)
-					full = true;
+				switch(kangaroo){
+					case 1:
+						if(habitat3.getKangaroo1() != null)
+							kChange = habitat3.getKangaroo1();
+					break;
+					case 2:
+						if(habitat3.getKangaroo2() != null)
+							kChange = habitat3.getKangaroo2();
+					break;
+					case 3:
+						if(habitat3.getKangaroo3() != null)
+							kChange = habitat3.getKangaroo3();
+					break;
+				}
 			break;
 		}
-		if(full)
-			msj = "la jaula esta llena";
-		else{
-			switch(habitatA){
+		return kChange;
+	}
+	public String changeKangaroo(int habitat, int cage, int kg, Kangaroo kNew){
+		Kangaroo kChange = kNew;
+		String msj = "";
+		if(kChange == null){
+				msj = "el canguro que selecciono no existe";
+			}
+		else if (getGender(habitat) .equalsIgnoreCase(kChange.getGender()))
+				msj = "ya hay un macho en esta jaula";
+		else
+		{
+			switch(habitat){
 				case 1:
-					switch(kangaroo){
+					switch (seeKangaroo1()){
 						case 1:
-							if(habitat1.getKangaroo1() != null){
-								kChange = habitat1.getKangaroo1();
-								if(habitat1.getGender1() .equalsIgnoreCase("male")){
-									male = true;
-								}
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 2:
-							if(habitat1.getKangaroo2() != null){
-								kChange = habitat1.getKangaroo2();
-								if(habitat1.getGender2() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 3:
-							if(habitat1.getKangaroo3() != null){
-								kChange = habitat1.getKangaroo3();
-								if(habitat1.getGender3() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-					}
-				break;
-				case 2:
-					switch(kangaroo){
-						case 1:
-							if(habitat2.getKangaroo1() != null){
-								kChange = habitat2.getKangaroo1();
-								if(habitat2.getGender1() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 2:
-							if(habitat2.getKangaroo2() != null){
-								kChange = habitat2.getKangaroo2();
-								if(habitat2.getGender2() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 3:
-							if(habitat2.getKangaroo3() != null){
-								kChange = habitat2.getKangaroo3();
-								if(habitat2.getGender3() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-					}
-				break;
-				case 3:
-					switch(kangaroo){
-						case 1:
-							if(habitat3.getKangaroo1() != null){
-								kChange = habitat3.getKangaroo1();
-								if(habitat3.getGender1() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 2:
-							if(habitat3.getKangaroo2() != null){
-								kChange = habitat3.getKangaroo2();
-								if(habitat3.getGender2() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-						case 3:
-							if(habitat3.getKangaroo3() != null){
-								kChange = habitat3.getKangaroo3();
-								if(habitat3.getGender3() .equalsIgnoreCase("male"))
-									male = true;
-							}
-							else
-								msj = "el canguro no existe";
-						break;
-					}
-				break;
-			}
-			if(male){
-				if (getGender(habitatC) .equalsIgnoreCase("male"));
-					msj = "ya hay un macho en esta jaula";
-			}
-				switch(habitatC){
-					case 1:
-						kg = seeKangaroo1();
-						switch (kg){
-							case 1:
+							if(habitat1.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
 								habitat1.setKangaroo1(kChange);
 								msj = "el canguro se ha cambiado correctamente";
-							break;
-							case 2:
-								habitat1.setKangaroo2(kChange);
-								msj = "el canguro se ha cambiado correctamente";
-							break;
-							case 3:
-								habitat1.setKangaroo3(kChange);
-								msj = "el canguro se ha cambiado correctamente";
-							break;	
-						}
-						
-				case 2:
-					kg = seeKangaroo2();
-					switch (kg){
-						case 1:
-							habitat2.setKangaroo1(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+							}
 						break;
 						case 2:
-							habitat2.setKangaroo2(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+							if(habitat1.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
+								habitat1.setKangaroo2(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
 						break;
 						case 3:
-							habitat2.setKangaroo3(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+							if(habitat1.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
+								habitat1.setKangaroo3(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
+						break;	
+					}
+				break;
+				case 2:
+					switch (seeKangaroo1()){
+						case 1:
+							if(habitat2.fullHabitat())
+								msj = "la jaula esta llena";
+							else{	
+								habitat2.setKangaroo1(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
+						break;
+						case 2:
+							if(habitat2.fullHabitat())
+								msj = "la jaula esta llena";
+							else{	
+								habitat2.setKangaroo2(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
+						break;
+						case 3:
+							if(habitat2.fullHabitat())
+								msj = "la jaula esta llena";
+							else{	
+								habitat2.setKangaroo3(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
 						break;	
 					}
 				break;
 				case 3:
-					kg = seeKangaroo3();
-					
-					switch (kg){
+					switch (seeKangaroo1()){
 						case 1:
-							habitat3.setKangaroo1(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+								if(habitat3.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
+								habitat3.setKangaroo1(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
 						break;
 						case 2:
-							habitat3.setKangaroo2(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+							if(habitat3.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
+								habitat3.setKangaroo2(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
 						break;
 						case 3:
-							habitat3.setKangaroo3(kChange);
-							msj = "el canguro se ha cambiado correctamente";
+								if(habitat3.fullHabitat())
+								msj = "la jaula esta llena";
+							else{
+								habitat3.setKangaroo3(kChange);
+								msj = "el canguro se ha cambiado correctamente";
+							}
 						break;	
 					}
 				break;
-				}
-			
+			}
+		deleteKangaroo(cage, kg);
 		}
-		return msj;
+		return msj;	
 	}
-}
+
+}	
+				
+	

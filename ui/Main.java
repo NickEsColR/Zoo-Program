@@ -59,12 +59,13 @@ public class Main{
 				break;
 				case 2:
 					System.out.println("*************************************************************************");
-					System.out.println("¿En que jaula se encuentra el canguro a eliminar?");
+					System.out.println("En que jaula se encuentra el canguro a eliminar?");
 					cage = option.nextInt();
 					option.nextLine();
-					System.out.println("¿cual es el numero del canguro a eliminar");
+					System.out.println("cual es el numero del canguro a eliminar?");
 					int delete = option.nextInt();
-					System.out.println(deleteKangaroo(cage, delete));
+					zoo.deleteKangaroo(cage, delete);
+					System.out.println("el canguro se elimino correctamente");
 					System.out.println("*************************************************************************");
 				break;
 				case 3:
@@ -78,7 +79,7 @@ public class Main{
 					System.out.println(zoo.seeHabitat(cage2));
 					System.out.println("Digite la posicion del canguro en la jaula inicial");
 					int kangaroo = option.nextInt();
-					System.out.println(zoo.changeKangaroo(cage,cage2,kangaroo));
+					System.out.println(zoo.changeKangaroo(cage2,cage, kangaroo, zoo.copyKangaroo(cage,kangaroo)));
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
@@ -93,7 +94,7 @@ public class Main{
 					System.out.println("*************************************************************************");
 					System.out.println("Digite la jaula en la que se encuentra el canguro");
 					cage = option.nextInt();
-					System.out.println("Digite el canguro del cual quiere conocer su fecha de vacunacion");
+					System.out.println("Digite el canguro del cual quiere conocer si necesita vacuna");
 					kangaroo = option.nextInt();
 					dv = zoo.getVaccine(cage,kangaroo);
 					if (dv)
@@ -130,20 +131,16 @@ public class Main{
 		System.out.println("2. Eliminar un canguro");
 		System.out.println("3. Cambiar el canguro de jaula");
 		System.out.println("4. Animal(es) del zoologico cuyo nombre empieza y termina en vocal");
-		System.out.println("5. Ver fecha de vacunacion de los canguros");
+		System.out.println("5. Ver si el canguro necesita vacuna");
 		System.out.println("6. Salir del programa");
 	}
 	
 	public String addKangaroo(int cage){
 		Scanner option = new Scanner(System.in);
-		KangarooZone kz1 = null;
-		KangarooZone kz2 = null;
-		KangarooZone kz3 = null;
-		int putKangaroo = 0;
+		String msj = "";
 		int theDayV = 0;
 		int theMonthV = 0;
 		int theYearV = 0;
-		String msj = "";
 		boolean vaccine = false;
 		System.out.println("Digite el nombre del canguro");
 		String theName = option.nextLine();
@@ -188,8 +185,20 @@ public class Main{
 		if (theGender .equalsIgnoreCase("male")){
 			if(theGender .equalsIgnoreCase(zoo.getGender(cage)))
 				msj = "ya existe un macho en esta jaula";
+			else
+				msj = createKangaroo(theName, theWeight, theHeight, theGender, theBlood, theDay, theMonth, theYear, theDayV, theMonthV, theYearV, cage, vaccine);
 		}
-		else{
+		else
+			msj = createKangaroo(theName, theWeight, theHeight, theGender, theBlood, theDay, theMonth, theYear, theDayV, theMonthV, theYearV, cage, vaccine);
+		return msj;
+	}
+	public String createKangaroo(String theName, int theWeight, double theHeight, String theGender, String theBlood, 
+	int theDay, int theMonth, int theYear, int theDayV, int theMonthV, int theYearV, int cage, boolean vaccine){
+			KangarooZone kz1 = zoo.getHabitat1();
+			KangarooZone kz2 = zoo.getHabitat2();
+			KangarooZone kz3 = zoo.getHabitat3();		
+			int putKangaroo = 0;
+			String msj = "";
 			Date vdkn = new Date(theDayV, theMonthV, theYearV);//vaccine date for the new kangaroo
 			Date dkn = new Date(theDay, theMonth, theYear);//born date for the new kangaroo
 			Kangaroo kn = new Kangaroo(theName, theWeight, theHeight, theGender, theBlood, dkn,vaccine, vdkn);//a new kangaroo is created
@@ -199,16 +208,16 @@ public class Main{
 					putKangaroo = zoo.seeKangaroo1();
 					switch(putKangaroo){
 						case 1:
-							kz1.setKangaroo1(kn);
+							 kz1.setKangaroo1(kn);
 							
 						break;
 						case 2:
-							kz1.setKangaroo2(kn);
+							 kz1.setKangaroo2(kn);
 							
 						break;
 						case 3:
 							
-							kz1.setKangaroo3(kn);
+							 kz1.setKangaroo3(kn);
 							
 						break;
 					}
@@ -217,15 +226,15 @@ public class Main{
 					putKangaroo = zoo.seeKangaroo2();
 					switch(putKangaroo){
 						case 1:
-							kz2.setKangaroo1(kn);
+							 kz2.setKangaroo1(kn);
 							
 						break;
 						case 2:
-							kz2.setKangaroo2(kn);
+							 kz2.setKangaroo2(kn);
 							
 						break;
 						case 3:
-							kz2.setKangaroo3(kn);
+							 kz2.setKangaroo3(kn);
 							
 						break;
 					}
@@ -234,15 +243,15 @@ public class Main{
 					putKangaroo = zoo.seeKangaroo3();
 					switch(putKangaroo){
 						case 1:
-							kz3.setKangaroo1(kn);
+							 kz3.setKangaroo1(kn);
 						
 						break;
 						case 2:
-							kz3.setKangaroo2(kn);
+							 kz3.setKangaroo2(kn);
 							
 						break;
 						case 3:
-							kz3.setKangaroo3(kn);
+							 kz3.setKangaroo3(kn);
 							
 					}
 				break;
@@ -250,14 +259,10 @@ public class Main{
 			
 
 			msj = "el canguro se ha creado";
-		}
+		
 		return msj;
 	}		
-	public String deleteKangaroo(int cage, int kg){
-		String msj = "";
-		msj = zoo.deleteKangaroo(cage,kg);
-		return msj;
-	}
+
 }
 	
 	

@@ -107,20 +107,21 @@ public class Kangaroo
 	}
 	
 	public String setHealth(){
-		if (imc < 18){
-			if (bloodType .equals(typeA) || bloodType .equals(typeAB))
+			if (imc < 18){
+				if (bloodType .equalsIgnoreCase(typeA) || bloodType .equalsIgnoreCase(typeAB))
+					health = "Riesgo bajo";
+				else
+					health = "Riesgo moderado";
+			}	
+			else if (imc >= 18 && imc <=25)
 				health = "Riesgo bajo";
-			else
-				health = "Riesgo moderado";
-		}	
-		else if (imc >= 18 && imc <=25)
-			health = "Riesgo bajo";
-		else{ 
-			if (bloodType .equals(typeA) || bloodType .equals(typeB) || bloodType .equals(typeO))
-				health = "Riesgo alto";
-			else
-				health = "Riesgo moderado";
-		}
+			else if (imc > 25){ 
+				 if (bloodType .equalsIgnoreCase(typeA) || bloodType .equalsIgnoreCase(typeB) || bloodType .equalsIgnoreCase(typeO))
+					health = "Riesgo alto";
+				else
+					health = "Riesgo moderado";
+			}
+		
 		return health;
 	}
 	
@@ -167,7 +168,7 @@ public class Kangaroo
 		boolean vocal = false;
 		
 
-		if (name != null){
+		if (name != ""){
 			String n = name.toLowerCase(); //modification of name
 			if (n.charAt(0) == 'a' || n .charAt(0) == 'e' || n .charAt(0) == 'i' || n .charAt(0) == 'o' || n .charAt(0) == 'u'  )
 			{
@@ -185,7 +186,7 @@ public class Kangaroo
 			if (vocal)
 				theName = name;
 		
-			}
-			return theName;
+		}
+		return theName;
 	}
 }

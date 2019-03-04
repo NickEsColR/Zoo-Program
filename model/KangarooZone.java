@@ -117,33 +117,7 @@ public class KangarooZone
 	return theGender;
 
 	}
-	public void setImc1(){
-		kangaroo1.setImc();
-	}
-	public void setImc2(){
-		kangaroo2.setImc();
-	}
-	public void setImc3(){
-		kangaroo3.setImc();
-	}
-	public void setWater1(){
-		kangaroo1.setWater();
-	}
-	public void setWater2(){
-		kangaroo2.setWater();
-	}
-	public void setWater3(){
-		kangaroo3.setWater();
-	}
-	public void setHealth1(){
-		kangaroo1.setHealth();
-	}
-	public void setHealth2(){
-		kangaroo2.setHealth();
-	}
-	public void setHealth3(){
-		kangaroo3.setHealth();
-	}
+	
 	public int seeKangaroo(){
 		int kg = 0;
 		if (kangaroo1 == null)
@@ -186,5 +160,11 @@ public class KangarooZone
 	public String getGender3(){
 		String gender = kangaroo3.getGender();
 		return gender;
+	}
+	public boolean fullHabitat(){
+		boolean full = false;
+		if(kangaroo1 != null && kangaroo2 != null && kangaroo3 != null)
+			full = true;
+		return full;
 	}
 }
