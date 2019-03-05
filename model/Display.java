@@ -188,8 +188,8 @@ public class Display{
 		return kg;
 	}
 	
-	public boolean getVaccine(int cage, int kg){
-		boolean dv = false;
+	public String getVaccine(int cage, int kg){
+		String dv = "";
 		switch (cage){
 			case 1:
 				dv = habitat1.getVaccine(kg);

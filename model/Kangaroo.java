@@ -189,4 +189,22 @@ public class Kangaroo
 		}
 		return theName;
 	}
+	public String vaccineDate(){
+		String msj = "";
+		int day = 0;
+		int month = 0;
+		int year = 0;
+		if (vaccineDate != null){
+			day = vaccineDate.getDay();
+			month = vaccineDate.getMonth();
+			year = vaccineDate.getYear();
+		}
+		else{
+			day = bornDate.getDay();
+			month = bornDate.getMonth();
+			year = bornDate.getYear() + 1;
+		} 
+		msj = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
+		return msj;
+	}
 }

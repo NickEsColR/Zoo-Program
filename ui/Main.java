@@ -12,15 +12,14 @@ public class Main{
 	private Display zoo;
 	
 	public Main(){
-		boolean dv = false;
-		String needVaccine = "";
+		String dv = "";
 		int cont = 0;
 		Scanner option = new Scanner(System.in);
 		//necesito saber como llamar el metodo de calculo correctamente
 		Dragon female = new Dragon(0.4, 0.5);
 		Dragon male = new Dragon(0.5, 0.6);
 		DragonZone dz = new DragonZone(38, true, male, female);
-		Date dk6 = new Date(18, 8, 2018);//second kangaroo in habitat2
+		Date dk6 = new Date(18, 9, 2018);//second kangaroo in habitat2
 		Kangaroo k6 = new Kangaroo("Anatolia", 35, 1.5, "Female", "O", dk6,true, null);//Second kangaroo in habitat2
 		Date dk4 = new Date(18, 11, 2018);//first Kangaroo in habitat3
 		Kangaroo k4 = new Kangaroo("Ezio", 44, 1.3, "Male", "AB", dk4, true, null);//editar
@@ -97,11 +96,8 @@ public class Main{
 					System.out.println("Digite el canguro del cual quiere conocer si necesita vacuna");
 					kangaroo = option.nextInt();
 					dv = zoo.getVaccine(cage,kangaroo);
-					if (dv)
-						needVaccine = "necesita vacuna";
-					else
-						needVaccine = "no necesita vacuna";
-					System.out.println(needVaccine);
+					System.out.println("la fecha de vacunacion es");					
+					System.out.println(dv);
 					System.out.println("*************************************************************************");
 				break;
 				case 6:
@@ -131,7 +127,7 @@ public class Main{
 		System.out.println("2. Eliminar un canguro");
 		System.out.println("3. Cambiar el canguro de jaula");
 		System.out.println("4. Animal(es) del zoologico cuyo nombre empieza y termina en vocal");
-		System.out.println("5. Ver si el canguro necesita vacuna");
+		System.out.println("5. Ver fecha de vacunacion del canguro");
 		System.out.println("6. Salir del programa");
 	}
 	

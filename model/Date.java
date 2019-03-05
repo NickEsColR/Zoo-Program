@@ -40,5 +40,7 @@ public class Date
 	public void setYear(int y){
 	  year = y;
 	}
-	
+	public void plusYear(){
+		year ++;
+	}
 }

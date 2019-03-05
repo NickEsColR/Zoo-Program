@@ -129,23 +129,30 @@ public class KangarooZone
 		return kg;
 
 	}
-	public boolean getVaccine( int kg){
-		
-		boolean dv = false;
-		switch (kg){
+	public String getVaccine( int kg){
+		String dv = "";
+		switch(kg){
 			case 1:
-				if (kangaroo1 != null)
-					dv = kangaroo1.getVaccine();
+				if(kangaroo1 != null){
+					dv = kangaroo1.vaccineDate();
+				}
+				else
+					dv = "el canguro no existe";
 			break;
 			case 2:
-				if (kangaroo2 != null)
-					dv = kangaroo2.getVaccine();
+				if(kangaroo2 != null){
+					dv = kangaroo2.vaccineDate();
+				}
+				else
+					dv = "el canguro no existe";
 			break;
 			case 3:
-				if (kangaroo3 != null)	
-					dv = kangaroo3.getVaccine();
+				if(kangaroo3 != null){
+					dv = kangaroo1.vaccineDate();
+				}
+				else
+					dv = "el canguro no existe";
 			break;
-
 		}
 		return dv;
 	}
